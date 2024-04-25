@@ -1,5 +1,3 @@
-import { IRegionPricing } from "../interfaces"
-
 interface SavedRegionsItemProps {
   name: string
   price: number

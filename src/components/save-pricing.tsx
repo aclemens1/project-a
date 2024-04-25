@@ -1,4 +1,5 @@
-import { ChangeEvent, useEffect } from "react"
+import { useEffect } from "react"
+import type { ChangeEvent } from "react"
 
 interface SavePricingProps {
   disabled?: boolean
@@ -16,7 +17,7 @@ const SavePricing: React.FC<SavePricingProps> = ({
 
   useEffect(() => {
     setCurrentPrice(currentPrice)
-  }, [])
+  })
 
   const handleSaveClick = () : void => {
     onSaveClick()

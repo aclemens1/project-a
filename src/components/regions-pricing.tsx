@@ -1,5 +1,5 @@
 import SavedRegionsItem from "./saved-regions-item"
-import { IRegionPricing } from "../interfaces"
+import type { IRegionPricing } from "../interfaces"
 
 interface RegionsPricingProps {
   data: IRegionPricing[]

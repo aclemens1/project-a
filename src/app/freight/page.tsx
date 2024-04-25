@@ -1,9 +1,9 @@
 'use client'
 
 import { useEffect, useState } from "react";
+import type { IRegionEntry, IRegionPricing, ISubregionEntry } from "~/interfaces";
+import type { NextPage } from "next";
 import StateMap from "~/components/state-map";
-import { IRegionEntry, IRegionPricing, ISubregionEntry } from "~/interfaces";
-import { NextPage } from "next";
 import SavePricing from "~/components/save-pricing";
 import Subregions from "~/components/subregions";
 import RegionsPricing from "~/components/regions-pricing";
