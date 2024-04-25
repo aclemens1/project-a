@@ -63,16 +63,24 @@ const FreightPage: NextPage = () => {
 
   useEffect(() => {
     fetch('./regions.json')
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok')
+        }
+        return response.json()
+      })
       .then((data) => {
-        const transformedData: IRegionEntry[] = data.map((region: any) => ({
+        const transformedData: IRegionEntry[] = data.map((region: IRegionEntry) => ({
           ...region,
           map: ''
         }));
-
-        setRegionsDictionary(transformedData);
+        setRegionsDictionary(transformedData)
+      })
+      .catch((error) => {
+        console.error('Error fetching regions:', error)
       })
   }, [])
+
 
   return (
     <>
