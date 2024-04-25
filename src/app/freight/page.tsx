@@ -70,7 +70,7 @@ const FreightPage: NextPage = () => {
         return response.json()
       })
       .then((data) => {
-        const transformedData: IRegionEntry[] = data.map((region: IRegionEntry) => ({
+        const transformedData: IRegionEntry[] = (data as IRegionEntry[]).map((region: IRegionEntry) => ({
           ...region,
           map: ''
         }));
