@@ -1,0 +1,294 @@
+[
+  {
+    "id": "NT",
+    "name": "Northern Territory",
+    "subregions": [
+      {
+        "id": "NT-1",
+        "name": "Darwin"
+      },
+      {
+        "id": "NT-2",
+        "name": "Top End"
+      },
+      {
+        "id": "NT-3",
+        "name": "East Arnhem"
+      },
+      {
+        "id": "NT-4",
+        "name": "Tiwi Islands"
+      },
+      {
+        "id": "NT-5",
+        "name": "Katherine"
+      },
+      {
+        "id": "NT-6",
+        "name": "Big Rivers"
+      },
+      {
+        "id": "NT-7",
+        "name": "Barkly Tablelands"
+      },
+      {
+        "id": "NT-8",
+        "name": "Alice Springs"
+      }
+    ]
+  },
+  {
+    "id": "NSW",
+    "name": "New South Wales",
+    "subregions": [
+      {
+        "id": "NSW-1",
+        "name": "Sydney"
+      },
+      {
+        "id": "NSW-2",
+        "name": "Central Coast"
+      },
+      {
+        "id": "NSW-3",
+        "name": "Hunter Region"
+      },
+      {
+        "id": "NSW-4",
+        "name": "Illawarra"
+      },
+      {
+        "id": "NSW-5",
+        "name": "Mid North Coast"
+      },
+      {
+        "id": "NSW-6",
+        "name": "New England"
+      },
+      {
+        "id": "NSW-7",
+        "name": "North Coast"
+      },
+      {
+        "id": "NSW-8",
+        "name": "Riverina"
+      },
+      {
+        "id": "NSW-9",
+        "name": "South Coast"
+      },
+      {
+        "id": "NSW-10",
+        "name": "Southern Highlands"
+      },
+      {
+        "id": "NSW-11",
+        "name": "Western Sydney"
+      }
+    ]
+  },
+  {
+    "id": "VIC",
+    "name": "Victoria",
+    "subregions": [
+      {
+        "id": "VIC-1",
+        "name": "Melbourne"
+      },
+      {
+        "id": "VIC-2",
+        "name": "Ballarat"
+      },
+      {
+        "id": "VIC-3",
+        "name": "Bendigo"
+      },
+      {
+        "id": "VIC-4",
+        "name": "Geelong"
+      },
+      {
+        "id": "VIC-5",
+        "name": "Latrobe Valley"
+      },
+      {
+        "id": "VIC-6",
+        "name": "Mildura"
+      },
+      {
+        "id": "VIC-7",
+        "name": "Shepparton"
+      },
+      {
+        "id": "VIC-8",
+        "name": "Warrnambool"
+      }
+    ]
+  },
+  {
+    "id": "QLD",
+    "name": "Queensland",
+    "subregions": [
+      {
+        "id": "QLD-1",
+        "name": "Brisbane"
+      },
+      {
+        "id": "QLD-2",
+        "name": "Gold Coast"
+      },
+      {
+        "id": "QLD-3",
+        "name": "Sunshine Coast"
+      },
+      {
+        "id": "QLD-4",
+        "name": "Cairns"
+      },
+      {
+        "id": "QLD-5",
+        "name": "Townsville"
+      },
+      {
+        "id": "QLD-6",
+        "name": "Toowoomba"
+      },
+      {
+        "id": "QLD-7",
+        "name": "Mackay"
+      },
+      {
+        "id": "QLD-8",
+        "name": "Rockhampton"
+      },
+      {
+        "id": "QLD-9",
+        "name": "Bundaberg"
+      },
+      {
+        "id": "QLD-10",
+        "name": "Hervey Bay"
+      }
+    ]
+  },
+  {
+    "id": "SA",
+    "name": "South Australia",
+    "subregions": [
+      {
+        "id": "SA-1",
+        "name": "Adelaide"
+      },
+      {
+        "id": "SA-2",
+        "name": "Barossa Valley"
+      },
+      {
+        "id": "SA-3",
+        "name": "Eyre Peninsula"
+      },
+      {
+        "id": "SA-4",
+        "name": "Fleurieu Peninsula"
+      },
+      {
+        "id": "SA-5",
+        "name": "Flinders Ranges"
+      },
+      {
+        "id": "SA-6",
+        "name": "Kangaroo Island"
+      },
+      {
+        "id": "SA-7",
+        "name": "Limestone Coast"
+      },
+      {
+        "id": "SA-8",
+        "name": "Murraylands"
+      },
+      {
+        "id": "SA-9",
+        "name": "Riverland"
+      },
+      {
+        "id": "SA-10",
+        "name": "Yorke Peninsula"
+      }
+    ]
+  },
+  {
+    "id": "WA",
+    "name": "Western Australia",
+    "subregions": [
+      {
+        "id": "WA-1",
+        "name": "Perth"
+      },
+      {
+        "id": "WA-2",
+        "name": "Peel"
+      },
+      {
+        "id": "WA-3",
+        "name": "South West"
+      },
+      {
+        "id": "WA-4",
+        "name": "Great Southern"
+      },
+      {
+        "id": "WA-5",
+        "name": "Mid West"
+      },
+      {
+        "id": "WA-6",
+        "name": "Gascoyne"
+      },
+      {
+        "id": "WA-7",
+        "name": "Pilbara"
+      },
+      {
+        "id": "WA-8",
+        "name": "Kimberley"
+      }
+    ]
+  },
+  {
+    "id": "TAS",
+    "name": "Tasmania",
+    "subregions": [
+      {
+        "id": "TAS-1",
+        "name": "Hobart"
+      },
+      {
+        "id": "TAS-2",
+        "name": "Launceston"
+      },
+      {
+        "id": "TAS-3",
+        "name": "North West Coast"
+      },
+      {
+        "id": "TAS-4",
+        "name": "East Coast"
+      },
+      {
+        "id": "TAS-5",
+        "name": "West Coast"
+      }
+    ]
+  },
+  {
+    "id": "ACT",
+    "name": "Australian Capital Territory",
+    "subregions": [
+      {
+        "id": "ACT-1",
+        "name": "Canberra"
+      }
+    ]
+  }
+]
