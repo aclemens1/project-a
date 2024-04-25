@@ -11,7 +11,7 @@ import RegionsPricing from "~/components/regions-pricing";
 const FreightPage: NextPage = () => {
 
   // Currently selected region
-  const [selectedRegion, setSelectedRegion] = useState("")
+  const [selectedRegion, setSelectedRegion] = useState<string>("")
 
   // Dictionary of regions which includes a map and a list of subregions
   const [regionsDictionary, setRegionsDictionary] = useState<IRegionEntry[]>([])
@@ -20,7 +20,7 @@ const FreightPage: NextPage = () => {
   const [regionsPricing, setRegionsPricing] = useState<IRegionPricing[]>([])
 
   // Current price shown in the "Enter Pricing" field
-  const [currentPrice, setCurrentPrice] = useState(-1)
+  const [currentPrice, setCurrentPrice] = useState<number>(-1)
 
   const handleRegionChange = (name: string) => {
     setSelectedRegion(name)
