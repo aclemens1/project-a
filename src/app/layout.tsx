@@ -23,13 +23,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`font-sans ${inter.variable}`}>
-        <Header />
-        <Menu />
-        <hr/>
-        <main>
-          {children}
-        </main>
+      <body className={`bg-gray-100 font-sans ${inter.variable} absolute inset-0 overflow-y-scroll`}>
+        <div className="flex h-full">
+          <div className="absolute inset-0 bottom-auto lg:w-64 lg:static lg:flex bg-white">
+            <Menu isOpen={false} />
+          </div>
+          <div className="flex flex-col flex-1">
+            <div className="text-white">
+              <Header />
+            </div>
+            <main className="flex-1">
+              {children}
+            </main>
+          </div>
+        </div>
       </body>
     </html>
   );
