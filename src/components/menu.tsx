@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import { usePathname } from 'next/navigation'
 import NavIcon from "./nav-icon"
@@ -7,18 +7,23 @@ import UserInfo from './user-info'
 
 interface MenuProps {
   isOpen: boolean
+  setIsOpen: (open: boolean) => void
 }
 
-const Menu: React.FC<MenuProps> = ({isOpen}) => {
+const Menu: React.FC<MenuProps> = ({isOpen, setIsOpen}) => {
+  const handleClick = () => {
+    setIsOpen(false)
+  }
+
   return (
-    <div className={`grow flex flex-col bg-white rounded-xl lg:rounded-0 ${isOpen ? "block" : "hidden lg:block"}`}>
-      <div className="ps-9 pe-4 py-5 md:py-7 lg:py-2 flex items-center border-b border-gray lg:border-none">
+    <div className={`grow flex flex-col ${isOpen ? "block" : "hidden lg:block"}`}>
+      <div className="ps-4 pe-4 py-4 md:py-7 lg:py-2 flex items-center border-b border-gray lg:border-none">
         <div className="flex-1 hidden md:block">
           <img src="./images/kenshi.png" alt="Kenshi Logo" className="h-16" />
         </div>
         <div className="flex grow lg:hidden justify-end">
           <UserInfo theme="dark" />
-          <button className="text-white order-first ms-0 md:ms-4 justify-self-start md:order-last bg-teal-800 flex items-center justify-center w-10 h-10 rounded-full border-gray-200 border">
+          <button onClick={handleClick} className="text-white order-first ms-0 md:ms-4 justify-self-start md:order-last bg-teal-800 flex items-center justify-center w-10 h-10 rounded-full border-gray-200 border">
             <NavIcon><path d="M16.067 15.183a.626.626 0 0 1-.884.884L10 10.884l-5.183 5.183a.626.626 0 0 1-.884-.884L9.116 10 3.933 4.817a.625.625 0 0 1 .884-.884L10 9.116l5.183-5.183a.625.625 0 0 1 .884.884L10.884 10l5.183 5.183Z"/></NavIcon>
           </button>
         </div>
