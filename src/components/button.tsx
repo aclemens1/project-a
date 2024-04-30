@@ -12,10 +12,10 @@ const Button: React.FC<IButtonProps> = ({type, children, className, disabled, on
   const viewClasses = (type?: "primary" | "secondary", disabled?: boolean): string => {
     switch(type) {
       case "secondary":
-        return `border-gray-200 ${disabled && "text-gray-300"}`
+        return `border-foboh-secondary ${disabled && "text-foboh-text"}`
       case "primary":
       default:
-          return `bg-teal-700 border-teal-700 text-white ${disabled && "bg-teal-disabled border-teal-disabled"}`
+          return `bg-foboh-main border-foboh-main text-foboh-panel ${disabled && "bg-foboh-main-disabled border-foboh-main-disabled"}`
     }
   }
 

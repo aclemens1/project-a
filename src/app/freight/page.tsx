@@ -66,6 +66,11 @@ const FreightPage: NextPage = () => {
     setCurrentPrice(null)
   }
 
+  const handleDelete = () => {
+    setCurrentPrice(null)
+    focusInput(inputRef)
+  }
+
   useEffect(() => {
     fetch('./regions.json')
       .then((response) => {
@@ -88,11 +93,11 @@ const FreightPage: NextPage = () => {
 
 
   return (
-    <div className="bg-white rounded-xl p-5 grow">
+    <div className="bg-foboh-panel rounded-xl p-5 grow">
       <div className="md:flex items-center">
         <div className="flex-1">
           <h1 className="text-2xl font-bold leading-tight">Freight Management</h1>
-          <p className="text-gray-500 my-3 md:my-0">Select freight zones and assign shipping prices</p>
+          <p className="text-foboh-text my-3 md:my-0">Select freight zones and assign shipping prices</p>
         </div>
         <div>
           <Button type="secondary" className="me-5" disabled={regionsPricing.length < 1}>Cancel</Button>
@@ -104,43 +109,40 @@ const FreightPage: NextPage = () => {
           <StateMap onClick={handleRegionChange} selectedRegion={selectedRegion} pricingData={regionsPricing} />
         </div>
         <div className="flex-1">
-          <div>
+          {
+            selectedRegion ?
+              <p className="text-xs"><span className="text-foboh-text">You selected:</span> <span className="font-semibold">{selectedRegion}</span> <button className="text-foboh-main font-semibold" onClick={cancelRegionSelection}>Change</button></p> :
+              <p className="text-foboh-text text-xs">You&rsquo;ve not selected a region, yet</p>
+          }
+          <div className="my-5">
             {
-              selectedRegion ?
-                <p className="text-gray-500 text-xs">You selected: <span className="text-gray-900 font-semibold">{selectedRegion}</span> <button className="text-teal-700 font-semibold" onClick={cancelRegionSelection}>Change</button></p> :
-                <p className="text-gray-500 text-xs">You&rsquo;ve not selected a region, yet</p>
+              selectedRegion && regionsDictionary ? (
+                <>
+                  <p className="text-foboh-text text-xs mb-3">This includes the following sub-regions:</p>
+                  <div className="h-20">
+                    <Subregions subregions={findSubregionsByRegionName(selectedRegion, regionsDictionary)} />
+                  </div>
+                </>
+              ) : (
+                <>
+                  <p className="text-foboh-text text-xs">
+                    Select a region to see sub-regions
+                  </p>
+                </>
+              )
             }
-            <div className="my-5">
-              {
-                selectedRegion && regionsDictionary ? (
-                  <>
-                    <p className="text-gray-500 text-xs mb-3">This includes the following sub-regions:</p>
-                    <div className="h-20">
-                      <Subregions subregions={findSubregionsByRegionName(selectedRegion, regionsDictionary)} />
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <p className="text-gray-500 text-xs">
-                      Select a region to see sub-regions
-                    </p>
-                  </>
-                )
-              }
-            </div>
           </div>
-          <div>
-            <SavePricing disabled={selectedRegion === ""}
-              currentPrice={currentPrice}
-              setCurrentPrice={setCurrentPrice}
-              onSaveClick={handleSavePricingClick}
-              inputRef={inputRef} />
-            <hr />
-            <RegionsPricing data={regionsPricing}
-              setData={setRegionsPricing}
-              currentRegion={selectedRegion}
-              onRegionChange={handleRegionChange} />
-          </div>
+
+          <SavePricing disabled={selectedRegion === ""}
+            currentPrice={currentPrice}
+            setCurrentPrice={setCurrentPrice}
+            onSaveClick={handleSavePricingClick}
+            inputRef={inputRef} />
+          <RegionsPricing data={regionsPricing}
+            setData={setRegionsPricing}
+            currentRegion={selectedRegion}
+            onRegionChange={handleRegionChange}
+            onDelete={handleDelete} />
         </div>
       </div>
     </div>

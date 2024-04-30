@@ -18,7 +18,7 @@ const SavePricing: React.FC<ISavePricingProps> = ({
     inputRef
   }) => {
 
-  const [, setCurrentValue] = useState<string>("")
+  const [currentValue, setCurrentValue] = useState<string>("")
 
   useEffect(() => {
     setCurrentPrice(currentPrice)
@@ -52,12 +52,12 @@ const SavePricing: React.FC<ISavePricingProps> = ({
   return (
     <>
       <label className="block text-xs mb-3 w-full">Enter Pricing</label>
-      <div className="flex items-center border border-gray-200 rounded-md mb-3 bg-white">
-        <span className="text-gray-300 ps-4 pe-1">A$</span>
+      <div className="flex items-center border border-foboh-secondary rounded-md mb-3 bg-foboh-panel">
+        <span className="text-foboh-text ps-4 pe-1">A$</span>
         <input
           ref={inputRef}
           disabled={disabled}
-          value={currentPrice ? currentPrice.toString() : ""}
+          value={currentValue}
           className="w-full ps-2 pe-1 py-3 bg-transparent flex-1 focus:outline-none"
           onChange={handleInputChange} />
       </div>
