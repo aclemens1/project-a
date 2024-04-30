@@ -18,12 +18,12 @@ const Header: React.FC<HeaderProps> = ( { isMenuOpen, setIsMenuOpen } ) => {
         <img src="./images/kenshi.png" alt="Kenshi Logo" className="h-16" />
       </div>
       <Burger onClick={handleClick} />
-      <div className="flex flex-1">
+      <div className="flex flex-1 lg:text-white">
         <div className="hidden lg:block">
-          <div className="text-bold lg:text-white">Hello, Ekemini</div>
-          <div className="text-xs text-slate-500 lg:text-white">Tue, 13 February 2024</div>
+          <div className="text-bold">Hello, Ekemini</div>
+          <div className="text-xs">Tue, 13 February 2024</div>
         </div>
-        <UserInfo theme="light" />
+        <UserInfo subtitleClass="text-gray-500 lg:text-white" />
       </div>
     </div>
   )
