@@ -9,6 +9,20 @@ import Subregions from "~/components/subregions";
 import RegionsPricing from "~/components/regions-pricing";
 import Button from "~/components/button";
 
+const findCurrentPriceByRegionName = (regionName: string, regionsPricing: IRegionPricing[]) : number | null => {
+  const region: IRegionPricing | undefined = regionsPricing.find((r) => r.name === regionName)
+  return region ? region.price : null
+}
+
+const findSubregionsByRegionName = (regionName: string, regionsDictionary: IRegionEntry[]) : ISubregionEntry[] | null => {
+  const region: IRegionEntry | undefined = regionsDictionary.find((r) => r.name === regionName)
+  return region ? region.subregions : null
+}
+
+const focusInput = (ref: MutableRefObject<HTMLInputElement | null>): void => {
+  setTimeout(() => ref && ref.current && ref.current.focus())
+}
+
 const FreightPage: NextPage = () => {
 
   const [selectedRegion, setSelectedRegion] = useState<string>("")
@@ -16,10 +30,6 @@ const FreightPage: NextPage = () => {
   const [regionsPricing, setRegionsPricing] = useState<IRegionPricing[]>([])
   const [currentPrice, setCurrentPrice] = useState<number | null>(null)
   const inputRef = useRef<HTMLInputElement | null>(null);
-
-  const focusInput = (ref: MutableRefObject<HTMLInputElement | null>) => {
-    setTimeout(() => ref && ref.current && ref.current.focus())
-  }
 
   const handleRegionChange = (name: string) => {
     setSelectedRegion(name)
@@ -49,19 +59,6 @@ const FreightPage: NextPage = () => {
       };
       setRegionsPricing([...regionsPricing, newRegionPricing]);
     }
-  }
-
-  const findCurrentPriceByRegionName = (regionName: string, regionsPricing: IRegionPricing[]) : number | null => {
-    const region = regionsPricing.find((r) => r.name === regionName)
-
-    if (region) return region.price
-
-    return null
-  }
-  
-  const findSubregionsByRegionName = (regionName: string, regionsDictionary: IRegionEntry[]) : ISubregionEntry[] | undefined => {
-    const region = regionsDictionary.find((r) => r.name === regionName)
-    return region ? region.subregions : undefined
   }
 
   const cancelRegionSelection = () => {
@@ -147,7 +144,8 @@ const FreightPage: NextPage = () => {
         </div>
       </div>
     </div>
-  );
+  )
+
 }
 
 export default FreightPage

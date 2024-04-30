@@ -1,7 +1,7 @@
 import type { ISubregionEntry } from "~/interfaces";
 
 interface ISubregionsProps {
-  subregions: ISubregionEntry[] | undefined
+  subregions: ISubregionEntry[] | null
 }
 
 const Subregions: React.FC<ISubregionsProps> = ({ subregions }) => {
