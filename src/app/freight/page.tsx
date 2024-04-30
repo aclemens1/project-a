@@ -73,6 +73,12 @@ const FreightPage: NextPage = () => {
     focusInput(inputRef)
   }
 
+  const handleCancelClick = () => {
+    setSelectedRegion("")
+    setCurrentPrice(null)
+    setRegionsPricing([])
+  }
+
   useEffect(() => {
     fetch('./regions.json')
       .then((response) => {
@@ -102,7 +108,7 @@ const FreightPage: NextPage = () => {
           <p className="text-foboh-text my-3 md:my-0">Select freight zones and assign shipping prices</p>
         </div>
         <div>
-          <Button type="secondary" className="me-5" disabled={regionsPricing.length < 1}>Cancel</Button>
+          <Button type="secondary" className="me-5" onClick={handleCancelClick} disabled={regionsPricing.length < 1}>Cancel</Button>
           <Button type="primary" disabled={regionsPricing.length < 1}>Save</Button>
         </div>
       </div>
