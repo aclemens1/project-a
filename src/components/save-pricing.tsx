@@ -30,7 +30,7 @@ const SavePricing: React.FC<ISavePricingProps> = ({
   }
 
   const isSaveButtonDisabled = () : boolean | undefined => {
-    return disabled || !currentPrice
+    return disabled ?? !currentPrice
   }
 
   const checkPriceValue = (value: string) : string =>{

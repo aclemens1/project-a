@@ -20,7 +20,9 @@ const findSubregionsByRegionName = (regionName: string, regionsDictionary: IRegi
 }
 
 const focusInput = (ref: MutableRefObject<HTMLInputElement | null>): void => {
-  setTimeout(() => ref && ref.current && ref.current.focus())
+  setTimeout(() => {
+    if (ref && ref.current) ref.current.focus()
+  })
 }
 
 const FreightPage: NextPage = () => {

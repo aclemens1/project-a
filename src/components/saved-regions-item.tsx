@@ -16,7 +16,7 @@ const SavedRegionsItem : React.FC<ISavedRegionsItemProps> = ( { name, price, ima
       <div className="flex flex-1 items-center">
         <div className="flex-1">
           <div className="mb-1">{name}</div>
-          <div><span className="text-foboh-text me-1">A$</span>{price && price.toFixed(2)}</div>
+          <div><span className="text-foboh-text me-1">A$</span>{price ? price.toFixed(2) : ""}</div>
         </div>
         <div>
           {!isEditDisabled &&
