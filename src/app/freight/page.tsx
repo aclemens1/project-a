@@ -21,7 +21,7 @@ const findSubregionsByRegionName = (regionName: string, regionsDictionary: IRegi
 
 const focusInput = (ref: MutableRefObject<HTMLInputElement | null>): void => {
   setTimeout(() => {
-    if (ref && ref.current) ref.current.focus()
+    if (ref.current) ref.current.focus()
   })
 }
 
