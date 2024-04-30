@@ -12,5 +12,5 @@ export interface IRegionEntry {
 
 export interface IRegionPricing {
   name: string
-  price: number
+  price: number | null
 }

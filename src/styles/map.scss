@@ -1,0 +1,44 @@
+.state-group:hover {
+  .state-path {
+    stroke: #000;
+  }
+}
+
+.state-group.selected {
+  .state-path {
+    fill: rgba(244, 255, 247, 1);
+    stroke: rgba(8, 130, 42, 1);
+  }
+
+  .state-plaque {
+    fill: rgba(8, 130, 42, 1);
+  }
+
+  .state-text {
+    fill: #fff;
+  }
+}
+
+.state-group.price-added {
+  .state-path {
+    fill: rgba(20, 125, 115, 1);
+    stroke: rgba(20, 125, 115, 1);
+    &:hover {
+      fill: rgba(20, 125, 115, .9);
+    }
+  }
+
+  .state-plaque {
+    fill: rgba(20, 125, 115, 1);
+  }
+
+  .state-text {
+    fill: #fff;
+  }
+}
+
+.state-group.price-added.selected {
+  .state-plaque {
+    fill: rgba(8, 130, 42, 1);
+  }
+}

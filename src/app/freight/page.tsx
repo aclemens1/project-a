@@ -1,37 +1,37 @@
 "use client"
 
-import { useEffect, useState } from "react";
+import { MutableRefObject, useEffect, useRef, useState } from "react";
 import type { IRegionEntry, IRegionPricing, ISubregionEntry } from "~/interfaces";
 import type { NextPage } from "next";
 import StateMap from "~/components/state-map";
 import SavePricing from "~/components/save-pricing";
 import Subregions from "~/components/subregions";
 import RegionsPricing from "~/components/regions-pricing";
+import Button from "~/components/button";
 
 const FreightPage: NextPage = () => {
 
-  // Currently selected region
   const [selectedRegion, setSelectedRegion] = useState<string>("")
-
-  // Dictionary of regions which includes a map and a list of subregions
   const [regionsDictionary, setRegionsDictionary] = useState<IRegionEntry[]>([])
-
-  // Data about region pricing we set through the app
   const [regionsPricing, setRegionsPricing] = useState<IRegionPricing[]>([])
+  const [currentPrice, setCurrentPrice] = useState<number | null>(null)
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
-  // Current price shown in the "Enter Pricing" field
-  const [currentPrice, setCurrentPrice] = useState<number>(-1)
+  const focusInput = (ref: MutableRefObject<HTMLInputElement | null>) => {
+    setTimeout(() => ref && ref.current && ref.current.focus())
+  }
 
   const handleRegionChange = (name: string) => {
     setSelectedRegion(name)
 
-    const currentPrice: number = findCurrentPriceByRegionName(name, regionsPricing)
-    setCurrentPrice(currentPrice ? currentPrice : -1)
+    const currentPrice: number | null = findCurrentPriceByRegionName(name, regionsPricing)
+    setCurrentPrice(currentPrice ? currentPrice : null)
+    focusInput(inputRef)
   }
 
   const handleSavePricingClick = () => {
 
-    if (currentPrice < 0) return
+    if (!currentPrice) return
 
     const regionPricing = regionsPricing.find((r) => r.name === selectedRegion)
   
@@ -51,14 +51,22 @@ const FreightPage: NextPage = () => {
     }
   }
 
-  const findCurrentPriceByRegionName = (regionName: string, regionsPricing: IRegionPricing[]) : number => {
+  const findCurrentPriceByRegionName = (regionName: string, regionsPricing: IRegionPricing[]) : number | null => {
     const region = regionsPricing.find((r) => r.name === regionName)
-    return region ? region.price : -1
+
+    if (region) return region.price
+
+    return null
   }
   
   const findSubregionsByRegionName = (regionName: string, regionsDictionary: IRegionEntry[]) : ISubregionEntry[] | undefined => {
     const region = regionsDictionary.find((r) => r.name === regionName)
     return region ? region.subregions : undefined
+  }
+
+  const cancelRegionSelection = () => {
+    setSelectedRegion("")
+    setCurrentPrice(null)
   }
 
   useEffect(() => {
@@ -83,52 +91,62 @@ const FreightPage: NextPage = () => {
 
 
   return (
-    <>
-      <div className="flex items-center">
+    <div className="bg-white rounded-xl p-5 grow">
+      <div className="md:flex items-center">
         <div className="flex-1">
-          <h1>Freight Management</h1>
-          <p>Select freight zones and assign shipping prices</p>
+          <h1 className="text-2xl font-bold leading-tight">Freight Management</h1>
+          <p className="text-gray-500 my-3 md:my-0">Select freight zones and assign shipping prices</p>
         </div>
         <div>
-          <button disabled>Cancel</button>
-          <button disabled>Save</button>
+          <Button type="secondary" className="me-5" disabled={regionsPricing.length < 1}>Cancel</Button>
+          <Button type="primary" disabled={regionsPricing.length < 1}>Save</Button>
         </div>
       </div>
-      <div className="flex">
-        <div>
-          <StateMap onClick={handleRegionChange} selectedRegion={selectedRegion} />
+      <div className="lg:flex my-20">
+        <div className="flex-1 lg:pe-20">
+          <StateMap onClick={handleRegionChange} selectedRegion={selectedRegion} pricingData={regionsPricing} />
         </div>
         <div className="flex-1">
-          {
-            selectedRegion ?
-              <p>You selected: {selectedRegion}</p> :
-              <p>You&rsquo;ve not selected a region, yet</p>
-          }
-          {
-            selectedRegion && regionsDictionary ? (
-              <>
-                <p>This includes the following sub-regions:</p>
-                <Subregions subregions={findSubregionsByRegionName(selectedRegion, regionsDictionary)} />
-              </>
-            ) : (
-              <p>
-                Select a region to see sub-regions
-              </p>
-            )
-          }
-          <hr />
-          <SavePricing disabled={selectedRegion === ""}
-            currentPrice={currentPrice}
-            setCurrentPrice={setCurrentPrice}
-            onSaveClick={handleSavePricingClick} />
-          <hr />
-          <RegionsPricing data={regionsPricing}
-            setData={setRegionsPricing}
-            currentRegion={selectedRegion}
-            onRegionChange={handleRegionChange} />
+          <div>
+            {
+              selectedRegion ?
+                <p className="text-gray-500 text-xs">You selected: <span className="text-gray-900 font-semibold">{selectedRegion}</span> <button className="text-teal-700 font-semibold" onClick={cancelRegionSelection}>Change</button></p> :
+                <p className="text-gray-500 text-xs">You&rsquo;ve not selected a region, yet</p>
+            }
+            <div className="my-5">
+              {
+                selectedRegion && regionsDictionary ? (
+                  <>
+                    <p className="text-gray-500 text-xs mb-3">This includes the following sub-regions:</p>
+                    <div className="h-20">
+                      <Subregions subregions={findSubregionsByRegionName(selectedRegion, regionsDictionary)} />
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <p className="text-gray-500 text-xs">
+                      Select a region to see sub-regions
+                    </p>
+                  </>
+                )
+              }
+            </div>
+          </div>
+          <div>
+            <SavePricing disabled={selectedRegion === ""}
+              currentPrice={currentPrice}
+              setCurrentPrice={setCurrentPrice}
+              onSaveClick={handleSavePricingClick}
+              inputRef={inputRef} />
+            <hr />
+            <RegionsPricing data={regionsPricing}
+              setData={setRegionsPricing}
+              currentRegion={selectedRegion}
+              onRegionChange={handleRegionChange} />
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

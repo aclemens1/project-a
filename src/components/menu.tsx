@@ -5,12 +5,12 @@ import NavIcon from "./nav-icon"
 import NavLink from "./nav-link"
 import UserInfo from './user-info'
 
-interface MenuProps {
+interface IMenuProps {
   isOpen: boolean
   setIsOpen: (open: boolean) => void
 }
 
-const Menu: React.FC<MenuProps> = ({isOpen, setIsOpen}) => {
+const Menu: React.FC<IMenuProps> = ({isOpen, setIsOpen}) => {
   const handleClick = () => {
     setIsOpen(false)
   }
@@ -23,13 +23,13 @@ const Menu: React.FC<MenuProps> = ({isOpen, setIsOpen}) => {
         </div>
         <div className="flex grow lg:hidden justify-end">
           <UserInfo theme="dark" />
-          <button onClick={handleClick} className="text-white order-first ms-0 md:ms-4 justify-self-start md:order-last bg-teal-800 flex items-center justify-center w-10 h-10 rounded-full border-gray-200 border">
+          <button onClick={handleClick} className="text-white order-first ms-0 md:ms-4 justify-self-start md:order-last bg-teal-700 flex items-center justify-center w-10 h-10 rounded-full border-gray-200 border">
             <NavIcon><path d="M16.067 15.183a.626.626 0 0 1-.884.884L10 10.884l-5.183 5.183a.626.626 0 0 1-.884-.884L9.116 10 3.933 4.817a.625.625 0 0 1 .884-.884L10 9.116l5.183-5.183a.625.625 0 0 1 .884.884L10.884 10l5.183 5.183Z"/></NavIcon>
           </button>
         </div>
       </div>
       <div className="flex-1">
-        <ul className="my-6">
+        <ul className="my-6 me-6 lg:me-0">
           <li>
             <NavLink href="/dashboard">
               <NavIcon className="mr-2"><path d="M9.733.88a1.25 1.25 0 0 0-1.358 1.245v3.177A1.24 1.24 0 0 0 9.41 6.534 2.5 2.5 0 1 1 6.5 9.13c-.032-.642.1-1.172.39-1.583a1.239 1.239 0 0 0-.132-1.599L4.601 3.741a1.25 1.25 0 0 0-1.846.086 8.094 8.094 0 0 0 .542 10.958A8.066 8.066 0 0 0 9 17.125h.116a8.149 8.149 0 0 0 8.009-8.01c.058-4.242-3.188-7.859-7.392-8.235Zm-6.02 3.74 2.156 2.203v.004c-.32.46-.52.992-.585 1.548H2.153a6.807 6.807 0 0 1 1.56-3.755Zm-1.56 5.005h3.15a3.75 3.75 0 0 0 3.072 3.073v3.149a6.875 6.875 0 0 1-6.221-6.222Zm11.702 4.23a6.832 6.832 0 0 1-4.23 1.99v-3.147a3.714 3.714 0 0 0 1.932-.955 3.75 3.75 0 0 0-1.932-6.441V2.125c3.556.319 6.302 3.381 6.25 6.973a6.833 6.833 0 0 1-2.02 4.757Z"/></NavIcon>
